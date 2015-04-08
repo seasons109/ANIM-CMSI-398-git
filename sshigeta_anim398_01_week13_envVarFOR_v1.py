@@ -2,14 +2,14 @@
 
 #Dictionary In-Class Assignment
 env_var = {}
-env_var ['$HIP'] = 'the home directory' #hou.expandString('$HIP')
-env_var ['$JOB'] = 'the project directory' #hou.expandString('$JOB')
-env_var ['$HFS'] = 'HFS file path' #hou.expandString('$HFS')
-env_var ['$HDA'] = 'HDA file path'
-env_var ['$HOME'] = 'HOME file path'
+env_var ['$HIP'] = hou.expandString('$HIP')
+env_var ['$JOB'] = hou.expandString('$JOB')
+env_var ['$HFS'] = hou.expandString('$HFS')
+env_var ['$HDA'] = hou.expandString('$HDA')
+env_var ['$HOME'] = hou.expandString('$HOME')
 
 #Asks for prompt of what they would like the letter to search for the variable.
-searched_letter = 'i'
+searched_letter = raw_input("Which letter would you like to search for? ")
 contains_letter_list = []
 
 for env_keys in env_var: 
@@ -19,10 +19,11 @@ for env_keys in env_var:
 		if searched_letter == env_var[env_keys][letter]:
 			contains_letter = True
 
-		#print("letter: " + str(letter) + "   " +  env_var[env_keys][letter])
 	if contains_letter: 
 		contains_letter_list.append( env_keys )
+
 	print( env_keys + " is mapped to " + env_var[env_keys] )
+
 
 if (len(contains_letter_list) == 0 ):
     print("No keys contain the letter " + searched_letter )
